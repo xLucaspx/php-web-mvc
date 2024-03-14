@@ -1,0 +1,134 @@
+:root {
+	/* Fonte */
+	--fonte: "Barlow", sans-serif;
+
+	/* Cores */
+	--branco: #FFF;
+	--preto: #000;
+	--cinza: #DDD;
+	--cinza_escuro: #3E3E3E;
+	--amarelo_claro: #EBC181;
+	--amarelo_escuro: #9B8357;
+	--verde_escuro: #333B1E;
+	--azul: #009DDA;
+	--azul_escuro: #005EAB;
+	--vermelho: #DE1010;
+	--vermelho_escuro: #920505;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--fonte);
+	line-height: 1.5;
+	background-color: var(--verde_escuro);
+}
+
+main {
+	min-height: 100vh;
+}
+
+.link {
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 500;
+	color: var(--amarelo_claro);
+	border-bottom: 1px solid transparent;
+	transition: 0.2s ease-out;
+}
+
+.link:hover,
+.link:focus {
+	color: var(--amarelo_escuro);
+	border-color: var(--amarelo_escuro);
+	cursor: pointer;
+}
+
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 2.5rem 0 1.75rem;
+}
+
+.header__logo {
+	width: 400px;
+}
+
+.header__nav__ul {
+	display: flex;
+	gap: 0 2rem;
+}
+
+.title {
+	text-align: center;
+	font-size: 48px;
+	margin-top: 40px;
+	color: var(--amarelo_claro);
+	font-weight: 700;
+}
+
+.subtitle {
+	text-align: center;
+	color: var(--amarelo_escuro);
+	font-size: 32px;
+	margin: 15px 0 5px;
+	font-weight: 700;
+}
+
+.container {
+	padding: 0.75rem 2rem 1.5rem;
+}
+
+.container__banner {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 3rem 0 1.25rem;
+}
+
+.ornaments {
+	width: 200px;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20rem;
+	height: 3.2rem;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--fonte);
+	font-size: 1.25rem;
+	border-radius: 5px;
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.25);
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+	transition: 0.45s ease-in-out;
+}
+
+.button:hover,
+.button:focus {
+	box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.45);
+	filter: saturate(150%);
+}
+
+.button--primary {
+	color: var(--verde_escuro);
+	background-color: var(--amarelo_claro);
+}
+
+.button--secondary {
+	color: var(--branco);
+	background-color: var(--amarelo_escuro);
+}
+
+.button--danger {
+	color: var(--branco);
+	background-color: var(--vermelho);
+}

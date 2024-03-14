@@ -1,0 +1,41 @@
+.container__table {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.table {
+	width: 90%;
+	margin: 0 auto 3rem;
+}
+
+.table,
+.table__th,
+.table__td {
+	border: 1px solid var(--amarelo_escuro);
+}
+
+.table__th {
+	background-color: var(--amarelo_claro);
+	color: var(--verde_escuro);
+	font-weight: 700;
+	font-size: 18px;
+	text-align: left;
+	padding: 10px;
+}
+
+.table__td {
+	color: var(--branco);
+	font-size: 18px;
+	padding: 8px;
+}
+
+.table__col--acao {
+	text-align: center;
+}
+
+.table__button {
+	width: 120px;
+	height: 45px;
+	margin: auto;
+}

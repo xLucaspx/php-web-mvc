@@ -1,0 +1,69 @@
+.container__banner {
+	width: 100%;
+	height: 460px;
+	background-image: url("../img/banner-site.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	align-items: flex-start;
+	justify-content: center;
+	padding-left: 2.5rem;
+	box-sizing: border-box;
+}
+
+.title {
+	font-size: 60px;
+}
+
+.container__cardapio {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.container__cardapio__header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.container__cardapio__produtos {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.cardapio__produtos__produto {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+	border: solid var(--amarelo_escuro) 2px;
+	overflow: hidden;
+	margin: 10px;
+	padding: 0 10px 5px;
+	width: 300px;
+	height: auto;
+}
+
+.cardapio__produtos__produto__img {
+	width: 350px;
+	height: 270px;
+	object-fit: cover;
+}
+
+.cardapio__produtos__produto__texto {
+	margin: 10px 0;
+	text-align: center;
+	color: var(--branco);
+}
+
+.cardapio__produtos__produto__texto--nome {
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.cardapio__produtos__produto__texto--preco {
+	color: var(--amarelo_claro);
+	font-size: 18px;
+	font-weight: 500;
+}

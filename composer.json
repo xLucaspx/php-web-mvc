@@ -1,0 +1,18 @@
+{
+	"name": "xlucaspx/php-web-serenatto",
+	"description": "Projeto do curso de PHP/Web da Alura",
+	"autoload": {
+		"psr-4": {
+			"Xlucaspx\\PhpWebSerenatto\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Lucas da Paz",
+			"email": "xlucaspx@gmail.com"
+		}
+	],
+	"require": {
+		"ext-pdo": "*"
+	}
+}
