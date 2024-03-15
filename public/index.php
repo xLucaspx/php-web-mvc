@@ -18,7 +18,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * - criar link para voltar ao topo
  * - criar página de login para acessar admin
  * - utilizar token de acesso para poder acessar admin e form
- * - utilizar display grid no cardápio
+ * - utilizar display grid no cardápio e nos radio buttons
  */
 
 $repository = new PdoProdutoRepository(ConnectionFactory::getConnection());

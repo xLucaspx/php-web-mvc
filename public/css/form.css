@@ -1,47 +1,65 @@
-form {
+.form {
 	display: flex;
 	flex-direction: column;
-	width: 400px;
-}
-
-.container-form {
-	display: flex;
+	margin: 0 auto;
 	justify-content: center;
+	max-width: 500px;
 }
 
-.container-radio {
+.form__fieldset {
 	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
 }
 
-.container-radio div {
-	padding: 10px;
+.form__fieldset--radio {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 10px;
 }
 
-form label {
-	color: #EBC181;
-	font-weight: bold;
+.form__container--radio {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.form__legend {
+	color: var(--amarelo_claro);
+	font-weight: 500;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.form__label {
+	color: var(--amarelo_claro);
+	font-weight: 500;
 	margin-bottom: 5px;
 }
 
-form input {
-	border-radius: 10px;
-	border: 3px solid #333B1E;
+.form__input {
 	padding: 10px;
-	margin-bottom: 10px;
 	transition: 0.5s;
 }
 
-form input[type="file"] {
+.form__input,
+.form__fieldset--radio {
+	border: 3px solid var(--amarelo_escuro);
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.form__input--file {
 	color: #FFF;
 }
 
-form input::file-selector-button {
+.form__input--file::file-selector-button {
 	padding: 5px;
 	border-radius: 5px;
 	border: none;
 }
 
-form input:focus {
-	border: 3px solid #EBC181;
+.form__input:focus {
+	border: 3px solid var(--amarelo_claro);
 	outline: none;
 }

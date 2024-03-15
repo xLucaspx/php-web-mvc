@@ -99,10 +99,12 @@ main {
 	align-items: center;
 	width: 20rem;
 	height: 3.2rem;
+	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: var(--fonte);
 	font-size: 1.25rem;
+	font-weight: 500;
 	border-radius: 5px;
 	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.25);
 	text-align: center;
