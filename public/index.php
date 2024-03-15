@@ -1,103 +1,68 @@
 <?php
 
-use Xlucaspx\PhpWebSerenatto\Domain\Model\TipoProduto;
-use Xlucaspx\PhpWebSerenatto\Infra\Connection\ConnectionFactory;
-use Xlucaspx\PhpWebSerenatto\Infra\Repository\PdoProdutoRepository;
+declare(strict_types=1);
+
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Nyholm\Psr7Server\ServerRequestCreator;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Xlucaspx\PhpWebSerenatto\Infra\Controller\Error404Controller;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$routes = require_once __DIR__ . '/../config/routes.php';
+/** @var ContainerInterface $diContainer */
+$diContainer = require_once __DIR__ . '/../config/dependencies.php';
+
+$httpMethod = $_SERVER['REQUEST_METHOD'];
+$pathInfo = $_SERVER['PATH_INFO'] ?? '/';
+
+// session_start();
+// session_regenerate_id();
+// $isLoginRoute = $pathInfo === '/login';
+// if (!array_key_exists('logado', $_SESSION) && !$isLoginRoute) {
+//	header('Location: /login');
+//	return;
+// }
+
+$key = "$httpMethod|$pathInfo";
+$controller = new Error404Controller();
+
+if (array_key_exists($key, $routes)) {
+	$controllerClass = $routes[$key];
+	$controller = $diContainer->get($controllerClass);
+}
+
+$psr17Factory = new Psr17Factory();
+$creator = new ServerRequestCreator(
+	$psr17Factory, // ServerRequestFactory
+	$psr17Factory, // UriFactory
+	$psr17Factory, // UploadedFileFactory
+	$psr17Factory, // StreamFactory
+);
+
+$request = $creator->fromGlobals();
+
+/** @var RequestHandlerInterface $controller */
+$response = $controller->handle($request);
+
+http_response_code($response->getStatusCode());
+foreach ($response->getHeaders() as $name => $values) {
+	foreach ($values as $value) {
+		header(sprintf('%s: %s', $name, $value), false);
+	}
+}
+
+echo $response->getBody();
+
 /**
- * - tipo como tabela, relação `produtos n <-> 1 tipos`;
- * - criar formulário de cadastro/alteração de tipo;
- * - criar listagem de tipos em admin (?)
- * - order by tipo: alfabético ou id;
+ * - try_catch na merda toda para retornar resposta de erro, senão a gambiara é grande
+ * - criar formulário de cadastro de tipo;
  * - criar header e footer
  *  - header: cardápio virtual - administração
  *  - footer: informações de contato, redes sociais, endereço
- * - melhorar organização e classes da estilização
  * - criar link para voltar ao topo
  * - criar página de login para acessar admin
  * - utilizar token de acesso para poder acessar admin e form
- * - utilizar display grid no cardápio e nos radio buttons
+ * - utilizar display grid no cardápio e nos radioButtons
  */
-
-$repository = new PdoProdutoRepository(ConnectionFactory::getConnection());
-
-$produtosCafe = $repository->buscaTodosPorTipo(TipoProduto::Cafe);
-$produtosAlmoco = $repository->buscaTodosPorTipo(TipoProduto::Almoco);
-
-$produtos = [
-	'Café' => $produtosCafe,
-	'Almoço' => $produtosAlmoco
-];
-?>
-
-<!doctype html>
-<html lang="pt-br">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-	<title>Serenatto Café e Bistrô</title>
-
-	<link rel="icon" href="img/icone-serenatto.png" type="image/x-icon">
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap">
-
-	<link rel="stylesheet" href="./css/reset.css">
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel="stylesheet" href="./css/home.css">
-
-	<title>Serenatto - Cardápio</title>
-</head>
-
-<body>
-<header class="header">
-	<img src="../public/img/logo-serenatto-horizontal.png" class="header__logo" alt="Logo da Serenatto">
-
-	<nav class="header__nav">
-		<ul class="header__nav__ul">
-			<li class="header__nav__ul__li"><a href="/" class="link">Home</a></li>
-			<li class="header__nav__ul__li"><a href="/admin" class="link">Administração</a></li>
-		</ul>
-	</nav>
-</header>
-
-<main>
-	<section class="container__banner">
-		<h1 class="title">Cardápio Digital</h1>
-	</section>
-
-
-	<?php foreach ($produtos as $tipo => $arrProdutos): ?>
-		<section class="container container__cardapio">
-			<div class="container__cardapio__header">
-				<h3 class="subtitle"><?= "Opções para o $tipo" ?></h3>
-				<img class="ornaments" src="img/ornaments-coffee.png" alt>
-			</div>
-
-			<div class="container__cardapio__produtos">
-				<?php foreach ($arrProdutos as $produto): ?>
-					<div class="cardapio__produtos__produto">
-						<div>
-							<img src="<?= $produto->urlImagem ?>" alt class="cardapio__produtos__produto__img">
-						</div>
-						<p
-							class="cardapio__produtos__produto__texto cardapio__produtos__produto__texto--nome"><?= $produto->nome ?></p>
-						<p class="cardapio__produtos__produto__texto"><?= $produto->descricao ?></p>
-						<p
-							class="cardapio__produtos__produto__texto cardapio__produtos__produto__texto--preco"><?= $produto->precoFormatado() ?></p>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		</section>
-	<?php endforeach; ?>
-</main>
-</body>
-</html>

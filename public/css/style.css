@@ -111,7 +111,7 @@ main {
 	text-decoration: none;
 	cursor: pointer;
 	outline: none;
-	transition: 0.45s ease-in-out;
+	transition: 0.45s ease-out;
 }
 
 .button:hover,

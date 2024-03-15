@@ -2,14 +2,14 @@
 
 require_once 'vendor/autoload.php';
 
-use Xlucaspx\PhpWebSerenatto\Domain\Model\DadosAtualizacaoProduto;
-use Xlucaspx\PhpWebSerenatto\Domain\Model\DadosCadastroProduto;
-use Xlucaspx\PhpWebSerenatto\Domain\Model\TipoProduto;
+use Xlucaspx\PhpWebSerenatto\Domain\Model\Product\UpdateProductDto;
+use Xlucaspx\PhpWebSerenatto\Domain\Model\Product\NewProductDto;
+use Xlucaspx\PhpWebSerenatto\Domain\Model\Product\TipoProduto;
 use Xlucaspx\PhpWebSerenatto\Infra\Connection\ConnectionFactory;
-use Xlucaspx\PhpWebSerenatto\Infra\Repository\PdoProdutoRepository;
+use Xlucaspx\PhpWebSerenatto\Infra\Repository\PdoProductRepository;
 
 $connection = ConnectionFactory::getConnection();
-$repository = new PdoProdutoRepository($connection);
+$repository = new PdoProductRepository($connection);
 
 $id = filter_input(INPUT_POST, 'id');
 $tipo = filter_input(INPUT_POST, 'tipo');
@@ -28,8 +28,8 @@ try {
 	}
 
 	$id
-		? $repository->atualiza(new DadosAtualizacaoProduto($id, $tipo, $nome, $descricao, $urlImagem, $preco))
-		: $repository->cadastra(new DadosCadastroProduto($tipo, $nome, $descricao, $urlImagem, $preco));
+		? $repository->update(new UpdateProductDto($id, $tipo, $nome, $descricao, $urlImagem, $preco))
+		: $repository->add(new NewProductDto($tipo, $nome, $descricao, $urlImagem, $preco));
 
 	$connection->commit();
 	header('Location: public/views/admin.php');

@@ -50,13 +50,32 @@
 }
 
 .form__input--file {
-	color: #FFF;
+	color: var(--amarelo_claro);
+	font-weight: 500;
 }
 
 .form__input--file::file-selector-button {
-	padding: 5px;
+	height: 30px;
+	margin-right: 18px;
+	font-family: var(--fonte);
+	font-size: 18px;
+	font-weight: 500;
+	border: 1px solid var(--amarelo_claro);
 	border-radius: 5px;
-	border: none;
+	background-color: var(--amarelo_escuro);
+	color: var(--verde_escuro);
+	transition: 0.45s ease-out;
+}
+
+.form__input--file::file-selector-button:hover,
+.form__input--file::file-selector-button:focus {
+	border-color: var(--amarelo_escuro);
+	background-color: var(--amarelo_claro);
+}
+
+.form__input--file,
+.form__input--file::file-selector-button {
+	cursor: pointer;
 }
 
 .form__input:focus {
