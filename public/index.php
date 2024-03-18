@@ -17,13 +17,14 @@ $diContainer = require_once __DIR__ . '/../config/dependencies.php';
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $pathInfo = $_SERVER['PATH_INFO'] ?? '/';
 
-// session_start();
+session_start();
 // session_regenerate_id();
-// $isLoginRoute = $pathInfo === '/login';
-// if (!array_key_exists('logado', $_SESSION) && !$isLoginRoute) {
-//	header('Location: /login');
-//	return;
-// }
+$publicRoutes = ['/', '/login'];
+// if not logged and not accessing public routes, redirect to login:
+if (!array_key_exists('logged', $_SESSION) && !in_array($pathInfo, $publicRoutes)) {
+	header('Location: /login');
+	return;
+}
 
 $key = "$httpMethod|$pathInfo";
 $controller = new Error404Controller();
@@ -57,12 +58,10 @@ echo $response->getBody();
 
 /**
  * - try_catch na merda toda para retornar resposta de erro, senão a gambiara é grande
- * - criar formulário de cadastro de tipo;
  * - criar header e footer
  *  - header: cardápio virtual - administração
  *  - footer: informações de contato, redes sociais, endereço
  * - criar link para voltar ao topo
- * - criar página de login para acessar admin
  * - utilizar token de acesso para poder acessar admin e form
  * - utilizar display grid no cardápio e nos radioButtons
  */

@@ -1,6 +1,13 @@
 CREATE SCHEMA IF NOT EXISTS `php_serenatto`;
 USE `php_serenatto`;
 
+CREATE TABLE `users` (
+	`id` INT AUTO_INCREMENT NOT NULL,
+	`email` VARCHAR (75) NOT NULL,
+	`password_hash` VARCHAR(255),
+	PRIMARY KEY (`id`, `email`)
+);
+
 CREATE TABLE `types` (
 	`id` INT AUTO_INCREMENT PRIMARY KEY,
 	`type` VARCHAR(25) NOT NULL
@@ -17,6 +24,8 @@ CREATE TABLE `products` (
 	CONSTRAINT fk_tipo_produto FOREIGN KEY (`type_id`) REFERENCES `types` (`id`)
 );
 
+-- password: #senhaLucas01
+INSERT INTO `users` (`email`, `password_hash`) VALUES ('lucas@serenatto.com', 'argon2id$v=19$m=65536,t=4,p=1$U3RnQWpOMnZ6b2xzdlVJQw$A35SP+01MlCnuPiKDcNa2sGQxYZSQolt0wBLmF4jtpw');
 
 INSERT INTO `types` (`type`) VALUES
 	('Café'), ('Almoço'), ('Lanches'), ('Sobremesas'), ('Sucos naturais');
