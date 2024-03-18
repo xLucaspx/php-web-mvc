@@ -1,4 +1,5 @@
 <?php
+$this->layout('layout');
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -26,16 +27,7 @@
 </head>
 
 <body>
-<header class="header">
-	<img src="img/logo-serenatto-horizontal.png" class="header__logo" alt="Logo da Serenatto">
-
-	<nav class="header__nav">
-		<ul class="header__nav__ul">
-			<li class="header__nav__ul__li"><a href="/" class="link">Home</a></li>
-			<li class="header__nav__ul__li"><a href="/admin" class="link">Administração</a></li>
-		</ul>
-	</nav>
-</header>
+<?= $this->insert('header'); ?>
 
 <main>
 	<section class="container__banner">
@@ -60,4 +52,4 @@
 	</section>
 </main>
 </body>
-</html>
+<!-- HTML closed in layout -->

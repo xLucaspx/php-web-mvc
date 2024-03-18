@@ -1,6 +1,7 @@
 <?php
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Type\TypeReportDto[] $types */
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Product\ProductDetailsDto[] $products */
+$this->layout('layout');
 ?>
 
 <!doctype html>
@@ -27,16 +28,7 @@
 </head>
 
 <body>
-<header class="header">
-	<img src="img/logo-serenatto-horizontal.png" class="header__logo" alt="Logo da Serenatto">
-
-	<nav class="header__nav">
-		<ul class="header__nav__ul">
-			<li class="header__nav__ul__li"><a href="/" class="link">Home</a></li>
-			<li class="header__nav__ul__li"><a href="/admin" class="link">Administração</a></li>
-		</ul>
-	</nav>
-</header>
+<?= $this->insert('header'); ?>
 
 <main class="container">
 	<section class="container__banner">
@@ -65,11 +57,11 @@
 					<td class="table__td"><?= $product->type ?></td>
 					<td class="table__td"><?= $product->description ?></td>
 					<td class="table__td"><?= $product->formattedPrice() ?></td>
-					<td class="table__td table__col--acao"><a class="button button--secondary table__button"
+					<td class="table__td table__col--acao"><a class="button button--secondary button--small"
 							href="/editar-produto?id=<?= $product->id ?>">Editar</a>
 					</td>
 					<td class="table__td table__col--acao">
-						<button type="button" class="button button--danger table__button delete-product-button"
+						<button type="button" class="button button--danger button--small delete-product-button"
 							data-id="<?= $product->id ?>" data-name="<?= $product->name ?>">
 							Excluir
 						</button>
@@ -102,11 +94,11 @@
 					<td class="table__td"><?= $type->totalProducts ?></td>
 					<td class="table__td"><?= $type->formattedPrice() ?></td>
 					<td class="table__td table__col--acao">
-						<button type="button" class="button button--secondary table__button edit-type-button"
+						<button type="button" class="button button--secondary button--small edit-type-button"
 							data-id="<?= $type->id ?>" data-type="<?= $type->type ?>">Editar</button>
 					</td>
 					<td class="table__td table__col--acao">
-						<button type="button" class="button button--danger table__button delete-type-button"
+						<button type="button" class="button button--danger button--small delete-type-button"
 							data-id="<?= $type->id ?>" data-type="<?= $type->type ?>">
 							Excluir
 						</button>
@@ -128,4 +120,4 @@
 <script src="js/create-type.js" type="module"></script>
 <script src="js/edit-type.js" type="module"></script>
 <script src="js/delete-type.js" type="module"></script>
-</html>
+<!-- HTML closed in layout -->

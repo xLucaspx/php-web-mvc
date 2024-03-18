@@ -30,6 +30,32 @@ main {
 	min-height: 100vh;
 }
 
+.hidden {
+	display: block;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	border: none;
+	border-color: transparent;
+	color: transparent;
+	position: absolute;
+	transition: 0.5s;
+}
+
+.scrollTop {
+	position: fixed;
+	bottom: 1.25rem;
+	right: 1rem;
+	content: url('../img/scroll_up.svg');
+	transition: 0.5s ease-out;
+}
+
+.scrollTop:hover,
+.scrollTop:focus {
+	filter: brightness(70%);
+}
+
 .link {
 	text-decoration: none;
 	font-size: 20px;
@@ -55,6 +81,12 @@ main {
 
 .header__logo {
 	width: 400px;
+}
+
+.header__div {
+	display: flex;
+	align-items: center;
+	gap: 0 3rem;
 }
 
 .header__nav__ul {
@@ -112,6 +144,13 @@ main {
 	cursor: pointer;
 	outline: none;
 	transition: 0.45s ease-out;
+}
+
+.button--small {
+	width: 100px;
+	height: 35px;
+	margin: auto;
+	font-size: 17px;
 }
 
 .button:hover,

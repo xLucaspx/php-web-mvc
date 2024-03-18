@@ -58,10 +58,8 @@ echo $response->getBody();
 
 /**
  * - try_catch na merda toda para retornar resposta de erro, senão a gambiara é grande
- * - criar header e footer
- *  - header: cardápio virtual - administração
- *  - footer: informações de contato, redes sociais, endereço
- * - criar link para voltar ao topo
+ * - opção/lógica de remover imagem
+ * - criar footer: informações de contato, redes sociais, endereço
  * - utilizar token de acesso para poder acessar admin e form
- * - utilizar display grid no cardápio e nos radioButtons
+ * - gerar pdf relatório
  */

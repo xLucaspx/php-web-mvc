@@ -26,13 +26,18 @@
 	align-items: center;
 }
 
-.container__cardapio__produtos {
-	display: flex;
-	justify-content: space-around;
+.lista__cardapio__produtos {
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	grid-template-rows: repeat(1, auto);
+	justify-items: center;
+	align-items: center;
 	flex-wrap: wrap;
+	gap: 1rem 0.5rem;
 }
 
-.cardapio__produtos__produto {
+.lista__produtos__produto {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -41,8 +46,9 @@
 	overflow: hidden;
 	margin: 10px;
 	padding: 0 10px 5px;
-	width: 300px;
-	height: auto;
+	width: 325px;
+	height: 450px;
+	box-sizing: border-box;
 }
 
 .cardapio__produtos__produto__img {

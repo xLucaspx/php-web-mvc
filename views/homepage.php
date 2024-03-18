@@ -1,6 +1,7 @@
 <?php
 /** @var array $products */
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Product\ProductDetailsDto[] $productList */
+$this->layout('layout');
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -28,16 +29,7 @@
 </head>
 
 <body>
-<header class="header">
-	<img src="img/logo-serenatto-horizontal.png" class="header__logo" alt="Logo da Serenatto">
-
-	<nav class="header__nav">
-		<ul class="header__nav__ul">
-			<li class="header__nav__ul__li"><a href="/" class="link">Home</a></li>
-			<li class="header__nav__ul__li"><a href="/admin" class="link">Administração</a></li>
-		</ul>
-	</nav>
-</header>
+<?= $this->insert('header'); ?>
 
 <main>
 	<section class="container__banner">
@@ -52,9 +44,9 @@
 				<img class="ornaments" src="img/ornaments-coffee.png" alt>
 			</div>
 
-			<div class="container__cardapio__produtos">
+			<ul class="lista__cardapio__produtos">
 				<?php foreach ($productList as $product): ?>
-					<div class="cardapio__produtos__produto">
+					<li class="lista__produtos__produto">
 						<div>
 							<img src="<?= $product->imageUrl ?>" alt class="cardapio__produtos__produto__img">
 						</div>
@@ -63,11 +55,12 @@
 						<p class="cardapio__produtos__produto__texto"><?= $product->description ?></p>
 						<p
 							class="cardapio__produtos__produto__texto cardapio__produtos__produto__texto--preco"><?= $product->formattedPrice() ?></p>
-					</div>
+					</li>
 				<?php endforeach; ?>
-			</div>
+			</ul>
 		</section>
 	<?php endforeach; ?>
 </main>
 </body>
-</html>
+<!-- HTML closed in layout -->
+

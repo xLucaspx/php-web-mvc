@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 use Xlucaspx\PhpWebSerenatto\Infra\Controller\{AdminController, HomepageController,};
-use Xlucaspx\PhpWebSerenatto\Infra\Controller\Login\{LoginController, LoginFormController};
+use Xlucaspx\PhpWebSerenatto\Infra\Controller\Login\{LoginController, LoginFormController, LogoutController};
 use Xlucaspx\PhpWebSerenatto\Infra\Controller\Product\{DeleteProductController,
 	EditProductController,
 	NewProductController,
-	ProductFormController
-};
+	ProductFormController};
 use Xlucaspx\PhpWebSerenatto\Infra\Controller\Type\{DeleteTypeController, EditTypeController, NewTypeController};
 
 return [
 	'GET|/' => HomepageController::class,
 	'GET|/login' => LoginFormController::class,
 	'POST|/login' => LoginController::class,
+	'GET|/logout' => LogoutController::class,
 	'GET|/admin' => AdminController::class,
 	// products
 	'GET|/novo-produto' => ProductFormController::class,

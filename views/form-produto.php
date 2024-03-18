@@ -2,6 +2,7 @@
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Type\TypeDetailsDto[] $types */
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Product\ProductDetailsDto $product */
 
+$this->layout('layout');
 $title = $product ? 'Editar produto' : 'Cadastrar produto';
 ?>
 
@@ -32,16 +33,7 @@ $title = $product ? 'Editar produto' : 'Cadastrar produto';
 </head>
 
 <body>
-<header class="header">
-	<img src="img/logo-serenatto-horizontal.png" class="header__logo" alt="Logo da Serenatto">
-
-	<nav class="header__nav">
-		<ul class="header__nav__ul">
-			<li class="header__nav__ul__li"><a href="/" class="link">Home</a></li>
-			<li class="header__nav__ul__li"><a href="/admin" class="link">Administração</a></li>
-		</ul>
-	</nav>
-</header>
+<?= $this->insert('header'); ?>
 
 <main>
 	<section class="container">
@@ -59,8 +51,8 @@ $title = $product ? 'Editar produto' : 'Cadastrar produto';
 
 					<div class="form__container--radio">
 						<?php foreach ($types as $type) : ?>
-							<label class="form__label">
-								<input type="radio" name="type" class="form__input"
+							<label class="form__label form__label--radio">
+								<input type="radio" name="type" class="form__input form__input--radio"
 									value="<?= $type->id ?>" <?= $product?->type === $type->type ? "checked" : '' ?> required>
 								<?= $type->type ?>
 							</label>
@@ -85,4 +77,4 @@ $title = $product ? 'Editar produto' : 'Cadastrar produto';
 	</section>
 </main>
 </body>
-</html>
+<!-- HTML closed in layout -->

@@ -19,7 +19,12 @@
 }
 
 .form__container--radio {
-	display: flex;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	grid-template-rows: repeat(1, auto);
+	justify-items: start;
+	align-items: center;
 	flex-wrap: wrap;
 	gap: 15px;
 }
@@ -47,6 +52,11 @@
 	border: 3px solid var(--amarelo_escuro);
 	border-radius: 10px;
 	margin-bottom: 10px;
+}
+
+.form__input--radio,
+.form__label--radio {
+	cursor: pointer;
 }
 
 .form__input--file {

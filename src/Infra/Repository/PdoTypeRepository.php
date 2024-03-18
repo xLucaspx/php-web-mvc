@@ -20,7 +20,7 @@ class PdoTypeRepository implements TypeRepository
 	#[\Override]
 	function all(): array
 	{
-		$sql = 'SELECT `id`, `type` FROM `types`';
+		$sql = 'SELECT `id`, `type` FROM `types` ORDER BY `type`';
 		$statement = $this->connection->query($sql);
 
 		return $this->hydrateTypeList($statement);
@@ -37,6 +37,7 @@ class PdoTypeRepository implements TypeRepository
 				countproductsbytype(`id`) AS `total_products`,
 				gettypeaverageprice(`id`) AS `average_price`
 			FROM `types`
+			ORDER BY `type`
 		END;
 
 		$statement = $this->connection->query($sql);
