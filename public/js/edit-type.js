@@ -4,7 +4,6 @@ const editType = async (id, type) => {
 	const newName = prompt(`Digite o novo nome para o tipo "${type}"`, type);
 
 	if (!newName || newName === type) {
-		alert("Valor inválido!");
 		return;
 	}
 

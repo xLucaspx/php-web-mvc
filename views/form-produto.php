@@ -2,7 +2,7 @@
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Type\TypeDetailsDto[] $types */
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Product\ProductDetailsDto $product */
 
-$this->layout('layout');
+$this->layout('components/layout');
 $title = $product ? 'Editar produto' : 'Cadastrar produto';
 ?>
 
@@ -33,7 +33,7 @@ $title = $product ? 'Editar produto' : 'Cadastrar produto';
 </head>
 
 <body>
-<?= $this->insert('header'); ?>
+<?= $this->insert('components/header'); ?>
 
 <main>
 	<section class="container">
@@ -76,5 +76,7 @@ $title = $product ? 'Editar produto' : 'Cadastrar produto';
 		</form>
 	</section>
 </main>
+
+<?= $this->insert('components/footer'); ?>
 </body>
 <!-- HTML closed in layout -->

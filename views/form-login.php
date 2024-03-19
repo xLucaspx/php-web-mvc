@@ -1,5 +1,5 @@
 <?php
-$this->layout('layout');
+$this->layout('components/layout');
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -22,12 +22,10 @@ $this->layout('layout');
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/form.css">
-
-	<title>Serenatto - Cardápio</title>
 </head>
 
 <body>
-<?= $this->insert('header'); ?>
+<?= $this->insert('components/header'); ?>
 
 <main>
 	<section class="container__banner">
@@ -51,5 +49,7 @@ $this->layout('layout');
 		</form>
 	</section>
 </main>
+
+<?= $this->insert('components/footer'); ?>
 </body>
 <!-- HTML closed in layout -->

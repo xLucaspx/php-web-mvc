@@ -1,7 +1,7 @@
 <?php
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Type\TypeReportDto[] $types */
 /** @var \Xlucaspx\PhpWebSerenatto\Domain\Model\Product\ProductDetailsDto[] $products */
-$this->layout('layout');
+$this->layout('components/layout');
 ?>
 
 <!doctype html>
@@ -28,7 +28,7 @@ $this->layout('layout');
 </head>
 
 <body>
-<?= $this->insert('header'); ?>
+<?= $this->insert('components/header'); ?>
 
 <main class="container">
 	<section class="container__banner">
@@ -95,7 +95,8 @@ $this->layout('layout');
 					<td class="table__td"><?= $type->formattedPrice() ?></td>
 					<td class="table__td table__col--acao">
 						<button type="button" class="button button--secondary button--small edit-type-button"
-							data-id="<?= $type->id ?>" data-type="<?= $type->type ?>">Editar</button>
+							data-id="<?= $type->id ?>" data-type="<?= $type->type ?>">Editar
+						</button>
 					</td>
 					<td class="table__td table__col--acao">
 						<button type="button" class="button button--danger button--small delete-type-button"
@@ -115,6 +116,8 @@ $this->layout('layout');
 	<!--			<input type="submit" class="botao-cadastrar" value="Baixar Relatório"/>-->
 	<!--		</form>-->
 </main>
+
+<?= $this->insert('components/footer'); ?>
 </body>
 <script src="js/delete-product.js" type="module"></script>
 <script src="js/create-type.js" type="module"></script>

@@ -18,7 +18,8 @@ $httpMethod = $_SERVER['REQUEST_METHOD'];
 $pathInfo = $_SERVER['PATH_INFO'] ?? '/';
 
 session_start();
-// session_regenerate_id();
+session_regenerate_id();
+
 $publicRoutes = ['/', '/login'];
 // if not logged and not accessing public routes, redirect to login:
 if (!array_key_exists('logged', $_SESSION) && !in_array($pathInfo, $publicRoutes)) {
@@ -59,7 +60,5 @@ echo $response->getBody();
 /**
  * - try_catch na merda toda para retornar resposta de erro, senão a gambiara é grande
  * - opção/lógica de remover imagem
- * - criar footer: informações de contato, redes sociais, endereço
  * - utilizar token de acesso para poder acessar admin e form
- * - gerar pdf relatório
  */

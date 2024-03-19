@@ -4,7 +4,6 @@ const createType = async () => {
 	const type = prompt("Digite o novo tipo:");
 
 	if (!type) {
-		alert("Valor inválido!");
 		return;
 	}
 
