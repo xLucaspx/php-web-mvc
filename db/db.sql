@@ -25,7 +25,7 @@ CREATE TABLE `products` (
 );
 
 -- password: #senhaLucas01
-INSERT INTO `users` (`email`, `password_hash`) VALUES ('lucas@serenatto.com', 'argon2id$v=19$m=65536,t=4,p=1$U3RnQWpOMnZ6b2xzdlVJQw$A35SP+01MlCnuPiKDcNa2sGQxYZSQolt0wBLmF4jtpw');
+INSERT INTO `users` (`email`, `password_hash`) VALUES ('lucas@serenatto.com', '$argon2id$v=19$m=65536,t=4,p=1$aTlXT2lwU3lnWkk0Umt0TA$9egUkaMzP1itwr4QOUZ+atUBTgAVWWPb+8OY+irQqQw');
 
 INSERT INTO `types` (`type`) VALUES
 	('Café'), ('Almoço'), ('Lanches'), ('Sobremesas'), ('Sucos naturais');

@@ -25,13 +25,13 @@ class LoginController implements RequestHandlerInterface
 
 		$userData = $this->userRepository->findByEmail($typedEmail);
 
-		if (!$userData) {
+		if (!$userData || !password_verify($typedPassword, $userData->passwordHash)) {
 			// TODO: add error message
 			return new Response(400, ['Location' => '/login']);
 		}
 
 		if (password_needs_rehash($userData->passwordHash, PASSWORD_ARGON2ID)) {
-			$updateData = new RehashUserPasswordDto($userData->id, $userData->passwordHash);
+			$updateData = new RehashUserPasswordDto($userData->id, $typedPassword);
 			$this->userRepository->updatePassword($updateData);
 		}
 
