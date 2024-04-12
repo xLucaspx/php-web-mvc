@@ -243,3 +243,20 @@ main {
 .footer__credits {
 	font-size: 14px;
 }
+
+@media screen and (max-width: 1000px) {
+	.header {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.footer__container {
+		flex-direction: column;
+		padding: 20px;
+
+	}
+
+	.footer__address {
+		text-align: center;
+	}
+}

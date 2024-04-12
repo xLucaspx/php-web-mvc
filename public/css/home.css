@@ -74,3 +74,13 @@
 	font-size: 18px;
 	font-weight: 500;
 }
+
+@media screen and (max-width: 1000px) {
+	.lista__cardapio__produtos {
+		grid-template-columns: 85vw;
+	}
+
+	.lista__produtos__produto {
+		width: 85vw;
+	}
+}
